@@ -1,5 +1,9 @@
 import { Text, View, Image, ImageBackground } from "react-native";
 import tw from "twrnc";
+import WifiIcon from "../../assets/wifi_icon.svg";
+import ChipIcon from "../../assets/chip_icon.svg";
+import MasterCardIcon from "../../assets/mastercard_icon.svg";
+
 
 const Card = () => {
   return (
@@ -8,15 +12,8 @@ const Card = () => {
       source={require("../../assets/worldmap.webp")}
     >
       <View style={tw`flex flex-row justify-between w-full`}>
-        <Image
-          style={tw``}
-          source={require("../../assets/chip_icon.svg")}
-        ></Image>
-
-        <Image
-          style={tw`rotate-90`}
-          source={require("../../assets/wifi_icon.svg")}
-        ></Image>
+        <ChipIcon />
+        <WifiIcon />
       </View>
 
       <Text style={tw`text-white font-medium text-2xl mx-auto`}>
@@ -36,10 +33,7 @@ const Card = () => {
         </View>
 
         <View style={tw`flex flex-col items-center`}>
-          <Image
-            style={tw``}
-            source={require("../../assets/mastercard_icon.svg")}
-          />
+          <MasterCardIcon />
           <Text style={tw`text-white`}>Mastercard</Text>
         </View>
       </View>
