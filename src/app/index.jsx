@@ -1,11 +1,7 @@
-import Home from "../layout/Home";
+import Routes from "../routes";
 
 const App = () => {
-  return (
-    <>
-      <Home />
-    </>
-  );
+  return <Routes />;
 };
 
 export default App;
