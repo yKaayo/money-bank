@@ -15,7 +15,7 @@ const Home = () => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView style={tw`w-full bg-white min-h-svh`}>
+    <ScrollView style={tw`w-full bg-white min-h-full py-3`}>
       <View style={tw`mx-5 flex flex-col`}>
         <View style={tw`flex flex-row items-center`}>
           <View style={tw`flex flex-col mx-auto my-5`}>
