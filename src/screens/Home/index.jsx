@@ -2,7 +2,10 @@ import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
 
-// Componets
+// Class
+import { client, account } from "../../class/main"
+
+// Components
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Footer from "../../components/Footer";
@@ -15,6 +18,9 @@ import SearchIcon from "../../assets/search_icon.svg";
 const Home = () => {
   const navigation = useNavigation();
 
+  console.log(client);
+  console.log(account);
+
   return (
     <>
       <ScrollView style={tw`w-full bg-white min-h-full py-3`}>
@@ -22,13 +28,15 @@ const Home = () => {
           <View style={tw`flex flex-row items-center`}>
             <View style={tw`flex flex-col mx-auto my-5`}>
               <Text style={tw`text-gray-400`}>Bem vindo</Text>
-              <Text style={tw`font-semibold text-xl -mt-[4px]`}>Caio</Text>
+              <Text style={tw`font-semibold text-xl -mt-[4px]`}>
+                {client.name}
+              </Text>
             </View>
 
             <Button Icon={SearchIcon} />
           </View>
 
-          <Card />
+          <Card name={client.name} cardNum={account.cardNumber} />
 
           <View style={tw`flex flex-row justify-between px-5 my-10`}>
             <TouchableOpacity onPress={() => navigation.navigate("send")}>

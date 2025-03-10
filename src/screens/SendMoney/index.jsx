@@ -7,6 +7,10 @@ import {
 } from "react-native";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+
+// Class
+import { client, account } from "../../class/main";
 
 // Components
 import Card from "../../components/Card";
@@ -16,8 +20,18 @@ import Button from "../../components/Button";
 import ArrowLeftIcon from "../../assets/arrow_left.svg";
 import PlusIcon from "../../assets/plus_icon.svg";
 
+// Utils
+import currency from "../../utils/currency";
+
 const SendMoney = () => {
+  const [value, setValue] = useState(0);
+
   const navigation = useNavigation();
+
+  const handleValueChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, "");
+    setValue(numericValue ? parseFloat(numericValue) / 100 : 0);
+  };
 
   return (
     <ScrollView style={tw`w-full bg-white min-h-full py-3`}>
@@ -35,7 +49,7 @@ const SendMoney = () => {
           </Text>
         </View>
 
-        <Card />
+        <Card name={client.name} cardNum={account.cardNumber} />
 
         <View
           style={tw`flex flex-col items-start gap-3 border border-gray-400 rounded-xl p-2`}
@@ -62,19 +76,23 @@ const SendMoney = () => {
             <Text style={tw`text-2xl text-gray-400 font-semibold`}>BRL</Text>
 
             <View style={tw`flex flex-row items-center`}>
-              <Text style={tw`text-2xl font-semibold`}>R$</Text>
               <TextInput
+                value={currency(value)}
+                onChangeText={handleValueChange}
                 style={[
                   tw`text-2xl font-semibold`,
                   { outlineWidth: 0, outlineColor: "transparent" },
                 ]}
                 placeholder="0,00"
+                keyboardType="numeric"
               />
             </View>
           </View>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => (account.take(value), console.log(account))}
+        >
           <Text
             style={tw`px-5 py-3 rounded-xl bg-blue-600 text-lg text-white text-center font-semibold`}
           >

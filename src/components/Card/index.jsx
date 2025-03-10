@@ -6,8 +6,8 @@ import WifiIcon from "../../assets/wifi_icon.svg";
 import ChipIcon from "../../assets/chip_icon.svg";
 import MasterCardIcon from "../../assets/mastercard_icon.svg";
 
-const Card = () => {
-  const cardNum = ["0000", "0000", "0000", "0000"];
+const Card = ({ name, cardNum }) => {
+  // const cardNum = ["0000", "0000", "0000", "0000"];
 
   return (
     <ImageBackground
@@ -22,11 +22,13 @@ const Card = () => {
       <View style={tw`flex flex-col gap-2 w-full max-w-[320px] mx-auto`}>
         <View style={tw`flex flex-row justify-between`}>
           {cardNum.map((num, i) => (
-            <Text key={i} style={tw`text-white font-medium text-2xl`}>{num}</Text>
+            <Text key={i} style={tw`text-white font-medium text-2xl`}>
+              {num}
+            </Text>
           ))}
         </View>
 
-        <Text style={tw`text-white font-medium text-xl`}>Caio</Text>
+        <Text style={tw`text-white font-medium text-xl`}>{name}</Text>
       </View>
 
       <View style={tw`flex flex-row justify-between`}>
